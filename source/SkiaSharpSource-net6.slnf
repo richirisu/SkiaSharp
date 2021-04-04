@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "SkiaSharpSource.sln",
+    "projects": [
+      "..\\binding\\SkiaSharp\\SkiaSharp.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.Desktop.Common\\SkiaSharp.Views.Desktop.Common.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.Desktop\\SkiaSharp.Views.Desktop.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views\\SkiaSharp.Views.csproj",
+      "SkiaSharp.Vulkan\\SkiaSharp.Vulkan.SharpVk\\SkiaSharp.Vulkan.SharpVk.csproj"
+    ]
+  }
+}

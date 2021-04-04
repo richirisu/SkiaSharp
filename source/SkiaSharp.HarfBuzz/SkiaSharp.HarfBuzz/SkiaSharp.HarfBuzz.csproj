@@ -1,12 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net462</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6)">$(TargetFrameworks);net6.0</TargetFrameworks>
     <RootNamespace>SkiaSharp.HarfBuzz</RootNamespace>
     <AssemblyName>SkiaSharp.HarfBuzz</AssemblyName>
     <PackagingGroup>SkiaSharp.HarfBuzz</PackagingGroup>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
-    <DefineConstants>$(DefineConstants);NET_STANDARD</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <DefineConstants>$(DefineConstants);__DESKTOP__</DefineConstants>

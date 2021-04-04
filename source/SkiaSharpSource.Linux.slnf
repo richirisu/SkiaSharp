@@ -1,0 +1,22 @@
+{
+  "solution": {
+    "path": "SkiaSharpSource.sln",
+    "projects": [
+      "..\\binding\\HarfBuzzSharp.Tizen\\HarfBuzzSharp.Tizen.csproj",
+      "..\\binding\\HarfBuzzSharp\\HarfBuzzSharp.csproj",
+      "..\\binding\\SkiaSharp.Tizen\\SkiaSharp.Tizen.csproj",
+      "..\\binding\\SkiaSharp\\SkiaSharp.csproj",
+      "SkiaSharp.HarfBuzz\\SkiaSharp.HarfBuzz\\SkiaSharp.HarfBuzz.csproj",
+      "SkiaSharp.Views.Forms\\SkiaSharp.Views.Forms.GTK\\SkiaSharp.Views.Forms.GTK.csproj",
+      "SkiaSharp.Views.Forms\\SkiaSharp.Views.Forms.Tizen\\SkiaSharp.Views.Forms.Tizen.csproj",
+      "SkiaSharp.Views.Forms\\SkiaSharp.Views.Forms\\SkiaSharp.Views.Forms.csproj",
+      "SkiaSharp.Views.Uno\\SkiaSharp.Views.Uno.Reference\\SkiaSharp.Views.Uno.Reference.csproj",
+      "SkiaSharp.Views.Uno\\SkiaSharp.Views.Uno.Wasm\\SkiaSharp.Views.Uno.Wasm.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.Desktop.Common\\SkiaSharp.Views.Desktop.Common.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.Gtk\\SkiaSharp.Views.Gtk.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.Gtk3\\SkiaSharp.Views.Gtk3.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.Tizen\\SkiaSharp.Views.Tizen.csproj",
+      "SkiaSharp.Vulkan\\SkiaSharp.Vulkan.SharpVk\\SkiaSharp.Vulkan.SharpVk.csproj"
+    ]
+  }
+}
