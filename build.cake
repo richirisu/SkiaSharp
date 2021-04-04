@@ -113,17 +113,17 @@ Task ("libs")
     .Does (() =>
 {
     // build the managed libraries
-    var platform = "";
+    var platform = ".sln";
     if (!BUILD_ALL_PLATFORMS) {
         if (IsRunningOnWindows ()) {
-            platform = ".Windows";
+            platform = ".Windows.slnf";
         } else if (IsRunningOnMac ()) {
-            platform = ".Mac";
+            platform = ".Mac.slnf";
         } else if (IsRunningOnLinux ()) {
-            platform = ".Linux";
+            platform = ".Linux.slnf";
         }
     }
-    RunMSBuild ($"./source/SkiaSharpSource{platform}.sln");
+    RunMSBuild ($"./source/SkiaSharpSource{platform}");
 
     // assemble the mdoc docs
     EnsureDirectoryExists ("./output/docs/mdoc/");

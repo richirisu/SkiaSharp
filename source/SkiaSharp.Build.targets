@@ -14,7 +14,6 @@
     <KeyFileName Condition=" '$(KeyFileName)' == '' ">mono.snk</KeyFileName>
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)..\$(KeyFileName)</AssemblyOriginatorKeyFile>
 
-    <GenerateAssemblyVersionInfo Condition=" '$(GenerateAssemblyVersionInfo)' == '' ">true</GenerateAssemblyVersionInfo>
     <AssemblyVersionGitSha Condition=" '$(AssemblyVersionGitSha)' == '' ">$(GIT_SHA)</AssemblyVersionGitSha>
     <AssemblyVersionGitSha Condition=" '$(AssemblyVersionGitSha)' == '' ">$(GIT_COMMIT)</AssemblyVersionGitSha>
 
@@ -25,6 +24,10 @@
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
 
     <!--
       Ignore this message:
@@ -49,7 +52,6 @@
 
   <ItemGroup>
     <PackageReference Include="mdoc" Version="5.7.4.10" PrivateAssets="All" />
-    <PackageReference Include="Xamarin.Build.TypeRedirector" Version="0.1.2-preview" PrivateAssets="All" />
   </ItemGroup>
 
   <!--
@@ -112,9 +114,6 @@ internal partial class VersionConstants {
     ===================================================================================================================
   -->
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' and '$(TargetPath)' != '' ">
-    <_SignAssemblyDependsOn Condition=" '$(TypeRedirectorSkip)' == 'false'">
-      _RedirectMovedTypes
-    </_SignAssemblyDependsOn>
     <_SignAssemblyAfterTargets>
       CoreCompile
     </_SignAssemblyAfterTargets>
