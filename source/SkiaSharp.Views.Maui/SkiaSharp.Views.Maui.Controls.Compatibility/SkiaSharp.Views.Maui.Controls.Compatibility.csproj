@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
+    <!-- <TargetFrameworks Condition="$(IsWindows)">$(TargetFrameworks);net6.0-windows10.0.17763</TargetFrameworks> -->
+    <PackagingGroup>SkiaSharp.Views.Maui.Controls.Compatibility</PackagingGroup>
+    <RootNamespace>SkiaSharp.Views.Maui.Controls.Compatibility</RootNamespace>
+    <AssemblyName>SkiaSharp.Views.Maui.Controls.Compatibility</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <DefineConstants>$(DefineConstants);__MAUI__</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Core" Version="6.0.100-preview.3.269" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="6.0.100-preview.3.269" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="6.0.100-preview.3.269" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
+    <ProjectReference Include="..\..\SkiaSharp.Views\SkiaSharp.Views\SkiaSharp.Views.csproj" />
+    <ProjectReference Include="..\SkiaSharp.Views.Maui.Core\SkiaSharp.Views.Maui.Core.csproj" />
+    <ProjectReference Include="..\SkiaSharp.Views.Maui.Controls\SkiaSharp.Views.Maui.Controls.csproj" />
+  </ItemGroup>
+  <!-- local files -->
+  <ItemGroup>
+    <Compile Include="..\SkiaSharp.Views.Maui.Core\Properties\SkiaSharpViewsMauiAssemblyInfo.cs" Link="Properties\SkiaSharpViewsMauiAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('net6.0-ios')) and !$(TargetFramework.StartsWith('net6.0-maccatalyst'))">
+    <Compile Remove="**\*.iOS.cs" />
+    <None Include="**\*.iOS.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('net6.0-android'))">
+    <Compile Remove="**\*.Android.cs" />
+    <None Include="**\*.Android.cs" />
+  </ItemGroup>
+  <!-- forms files -->
+  <ItemGroup>
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Native.Shared\SKCanvasViewRendererBase.cs" Link="Platform\SKCanvasViewRendererBase.cs" />
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Native.Shared\SKGLViewRendererBase.cs" Link="Platform\SKGLViewRendererBase.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) or $(TargetFramework.StartsWith('net6.0-maccatalyst'))">
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.iOS\SKCanvasViewRenderer.cs" Link="Platform\iOS\SKCanvasViewRenderer.cs" />
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.iOS\SKGLViewRenderer.cs" Link="Platform\iOS\SKGLViewRenderer.cs" />
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.iOS\SKImageSourceHandler.cs" Link="Platform\iOS\SKImageSourceHandler.cs" />
+    <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKCanvasViewRenderer.cs" Link="Platform\Android\SKCanvasViewRenderer.cs" />
+    <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKGLViewRenderer.cs" Link="Platform\Android\SKGLViewRenderer.cs" />
+    <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKImageSourceHandler.cs" Link="Platform\Android\SKImageSourceHandler.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android'))">
+    <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.iOS\SKCanvasViewRenderer.cs" Link="Platform\iOS\SKCanvasViewRenderer.cs" />
+    <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.iOS\SKGLViewRenderer.cs" Link="Platform\iOS\SKGLViewRenderer.cs" />
+    <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.iOS\SKImageSourceHandler.cs" Link="Platform\iOS\SKImageSourceHandler.cs" />
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKCanvasViewRenderer.cs" Link="Platform\Android\SKCanvasViewRenderer.cs" />
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKGLViewRenderer.cs" Link="Platform\Android\SKGLViewRenderer.cs" />
+    <Compile Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKImageSourceHandler.cs" Link="Platform\Android\SKImageSourceHandler.cs" />
+  </ItemGroup>
+</Project>

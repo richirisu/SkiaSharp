@@ -107,6 +107,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkiaSharp.Views.Uno.Referen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkiaSharp.Views", "SkiaSharp.Views\SkiaSharp.Views\SkiaSharp.Views.csproj", "{0A260EF3-2586-4EFC-AFCC-DAE5E7C8B206}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkiaSharp.Views.Maui", "SkiaSharp.Views.Maui", "{C62F9437-D3A0-40EF-9ED1-FC1874EC962A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkiaSharp.Views.Maui.Core", "SkiaSharp.Views.Maui\SkiaSharp.Views.Maui.Core\SkiaSharp.Views.Maui.Core.csproj", "{8157A0E3-C671-4071-9841-E2E333DA0943}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkiaSharp.Views.Maui.Controls", "SkiaSharp.Views.Maui\SkiaSharp.Views.Maui.Controls\SkiaSharp.Views.Maui.Controls.csproj", "{B48CEE3B-E0F8-4B2E-A1C8-4D25F2AF1DA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkiaSharp.Views.Maui.Controls.Compatibility", "SkiaSharp.Views.Maui\SkiaSharp.Views.Maui.Controls.Compatibility\SkiaSharp.Views.Maui.Controls.Compatibility.csproj", "{34A0ACCB-97F4-4DC0-813E-27A4C1DB995B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -295,6 +303,18 @@ Global
 		{0A260EF3-2586-4EFC-AFCC-DAE5E7C8B206}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A260EF3-2586-4EFC-AFCC-DAE5E7C8B206}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A260EF3-2586-4EFC-AFCC-DAE5E7C8B206}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8157A0E3-C671-4071-9841-E2E333DA0943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8157A0E3-C671-4071-9841-E2E333DA0943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8157A0E3-C671-4071-9841-E2E333DA0943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8157A0E3-C671-4071-9841-E2E333DA0943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48CEE3B-E0F8-4B2E-A1C8-4D25F2AF1DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48CEE3B-E0F8-4B2E-A1C8-4D25F2AF1DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48CEE3B-E0F8-4B2E-A1C8-4D25F2AF1DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48CEE3B-E0F8-4B2E-A1C8-4D25F2AF1DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A0ACCB-97F4-4DC0-813E-27A4C1DB995B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A0ACCB-97F4-4DC0-813E-27A4C1DB995B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A0ACCB-97F4-4DC0-813E-27A4C1DB995B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A0ACCB-97F4-4DC0-813E-27A4C1DB995B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -345,6 +365,9 @@ Global
 		{047C460D-7470-418C-AF2C-30620A1AF61C} = {E53351EA-FE40-47D2-B388-4A75DA6CCD71}
 		{D5C7D157-609E-4D64-8E42-C1DB0FAA86EB} = {E53351EA-FE40-47D2-B388-4A75DA6CCD71}
 		{0A260EF3-2586-4EFC-AFCC-DAE5E7C8B206} = {F19E1537-81B2-4D4F-A69E-78DC73ACC141}
+		{8157A0E3-C671-4071-9841-E2E333DA0943} = {C62F9437-D3A0-40EF-9ED1-FC1874EC962A}
+		{B48CEE3B-E0F8-4B2E-A1C8-4D25F2AF1DA4} = {C62F9437-D3A0-40EF-9ED1-FC1874EC962A}
+		{34A0ACCB-97F4-4DC0-813E-27A4C1DB995B} = {C62F9437-D3A0-40EF-9ED1-FC1874EC962A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67EACD19-0CEA-4127-9842-549AA6FB84C9}

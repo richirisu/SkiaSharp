@@ -1,7 +1,11 @@
 ﻿using System;
 using Android.Views;
 
+#if __MAUI__
+namespace SkiaSharp.Views.Maui
+#else
 namespace SkiaSharp.Views.Forms
+#endif
 {
 	internal class SKTouchHandler
 	{

@@ -2,26 +2,35 @@
 using System.ComponentModel;
 using Android.Content;
 using Android.Opengl;
+
+#if __MAUI__
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Compatibility;
+
+using SKFormsView = SkiaSharp.Views.Maui.Controls.SKGLView;
+using SKNativeView = SkiaSharp.Views.Android.SKGLTextureView;
+
+[assembly: ExportRenderer(typeof(SKFormsView), typeof(SkiaSharp.Views.Maui.Controls.Compatibility.SKGLViewRenderer))]
+#else
 using Xamarin.Forms;
 
 using SKFormsView = SkiaSharp.Views.Forms.SKGLView;
 using SKNativeView = SkiaSharp.Views.Android.SKGLTextureView;
 
 [assembly: ExportRenderer(typeof(SKFormsView), typeof(SkiaSharp.Views.Forms.SKGLViewRenderer))]
+#endif
 
+#if __MAUI__
+namespace SkiaSharp.Views.Maui.Controls.Compatibility
+#else
 namespace SkiaSharp.Views.Forms
+#endif
 {
 	public class SKGLViewRenderer : SKGLViewRendererBase<SKFormsView, SKNativeView>
 	{
 		public SKGLViewRenderer(Context context)
 			: base(context)
-		{
-		}
-
-		[EditorBrowsable (EditorBrowsableState.Never)]
-		[Obsolete("This constructor is obsolete as of version 2.5. Please use SKGLViewRenderer(Context) instead.")]
-		public SKGLViewRenderer()
-			: base()
 		{
 		}
 

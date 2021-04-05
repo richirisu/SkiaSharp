@@ -2,11 +2,16 @@
   "solution": {
     "path": "SkiaSharpSource.sln",
     "projects": [
+      "..\\binding\\HarfBuzzSharp\\HarfBuzzSharp.csproj",
       "..\\binding\\SkiaSharp\\SkiaSharp.csproj",
+      "SkiaSharp.HarfBuzz\\SkiaSharp.HarfBuzz\\SkiaSharp.HarfBuzz.csproj",
+      "SkiaSharp.Views.Maui\\SkiaSharp.Views.Maui.Controls.Compatibility\\SkiaSharp.Views.Maui.Controls.Compatibility.csproj",
+      "SkiaSharp.Views.Maui\\SkiaSharp.Views.Maui.Controls\\SkiaSharp.Views.Maui.Controls.csproj",
+      "SkiaSharp.Views.Maui\\SkiaSharp.Views.Maui.Core\\SkiaSharp.Views.Maui.Core.csproj",
       "SkiaSharp.Views\\SkiaSharp.Views.Desktop.Common\\SkiaSharp.Views.Desktop.Common.csproj",
-      "SkiaSharp.Views\\SkiaSharp.Views.Desktop\\SkiaSharp.Views.Desktop.csproj",
-      "SkiaSharp.Views\\SkiaSharp.Views\\SkiaSharp.Views.csproj",
-      "SkiaSharp.Vulkan\\SkiaSharp.Vulkan.SharpVk\\SkiaSharp.Vulkan.SharpVk.csproj"
+      "SkiaSharp.Views\\SkiaSharp.Views.WPF\\SkiaSharp.Views.WPF.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views.WindowsForms\\SkiaSharp.Views.WindowsForms.csproj",
+      "SkiaSharp.Views\\SkiaSharp.Views\\SkiaSharp.Views.csproj"
     ]
   }
 }

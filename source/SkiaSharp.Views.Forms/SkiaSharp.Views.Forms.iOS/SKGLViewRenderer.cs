@@ -1,14 +1,30 @@
 ﻿using System;
 using CoreAnimation;
 using Foundation;
+
+#if __MAUI__
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Compatibility;
+
+using SKFormsView = SkiaSharp.Views.Maui.Controls.SKGLView;
+using SKNativeView = SkiaSharp.Views.iOS.SKGLView;
+
+[assembly: ExportRenderer(typeof(SKFormsView), typeof(SkiaSharp.Views.Maui.Controls.Compatibility.SKGLViewRenderer))]
+#else
 using Xamarin.Forms;
 
 using SKFormsView = SkiaSharp.Views.Forms.SKGLView;
 using SKNativeView = SkiaSharp.Views.iOS.SKGLView;
 
 [assembly: ExportRenderer(typeof(SKFormsView), typeof(SkiaSharp.Views.Forms.SKGLViewRenderer))]
+#endif
 
+#if __MAUI__
+namespace SkiaSharp.Views.Maui.Controls.Compatibility
+#else
 namespace SkiaSharp.Views.Forms
+#endif
 {
 	public class SKGLViewRenderer : SKGLViewRendererBase<SKFormsView, SKNativeView>
 	{

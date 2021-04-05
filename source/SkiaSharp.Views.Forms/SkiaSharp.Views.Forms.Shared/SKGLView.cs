@@ -1,9 +1,21 @@
 ﻿using System;
-using Xamarin.Forms;
 
+#if __MAUI__
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+#else
+using Xamarin.Forms;
+#endif
+
+#if __MAUI__
+namespace SkiaSharp.Views.Maui.Controls
+#else
 namespace SkiaSharp.Views.Forms
+#endif
 {
+#if !__MAUI__
 	[RenderWith(typeof(SKGLViewRenderer))]
+#endif
 	public partial class SKGLView : View, ISKGLViewController
 	{
 		public static readonly BindableProperty HasRenderLoopProperty =

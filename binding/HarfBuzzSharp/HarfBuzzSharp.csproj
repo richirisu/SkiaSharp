@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net462</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6)">$(TargetFrameworks);net6.0;net6.0-ios10.0;net6.0-maccatalyst13.1;net6.0-tvos10.0;net6.0-macos10.14;net6.0-android</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6) and $(IsWindows)">$(TargetFrameworks);net6.0-windows7;net6.0-windows10.0.17763</TargetFrameworks>
     <RootNamespace>HarfBuzzSharp</RootNamespace>
     <AssemblyName>HarfBuzzSharp</AssemblyName>
     <PackagingGroup>HarfBuzzSharp</PackagingGroup>
     <DefineConstants>$(DefineConstants);HARFBUZZ</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
-    <DefineConstants>$(DefineConstants);USE_DELEGATES;__DESKTOP__</DefineConstants>
+    <DefineConstants>$(DefineConstants);USE_DELEGATES</DefineConstants>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="System.IO.UnmanagedMemoryStream" Version="4.3.0" />
@@ -15,7 +17,7 @@
   <ItemGroup>
     <PackageReference Include="System.Memory" Version="4.5.3" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard2'))">
     <!-- macOS -->
     <None Include="..\..\output\native\osx\libHarfBuzzSharp*" Link="nuget\runtimes\osx\native\%(Filename)%(Extension)" />
     <!-- Windows -->
@@ -50,7 +52,35 @@
     <None Include="nuget\build\wasm\HarfBuzzSharp.targets" Link="nuget\build\wasm\HarfBuzzSharp.targets" />
   </ItemGroup>
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <!-- .NET Framework -->
     <None Include="nuget\build\net462\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('-android'))">
+    <!-- Android -->
+    <None Include="..\..\output\native\android\x86\libHarfBuzzSharp*" Link="nuget\build\$(TargetFramework)\x86\%(Filename)%(Extension)" />
+    <None Include="..\..\output\native\android\x86_64\libHarfBuzzSharp*" Link="nuget\build\$(TargetFramework)\x64\%(Filename)%(Extension)" />
+    <None Include="..\..\output\native\android\armeabi-v7a\libHarfBuzzSharp*" Link="nuget\build\$(TargetFramework)\arm\%(Filename)%(Extension)" />
+    <None Include="..\..\output\native\android\arm64-v8a\libHarfBuzzSharp*" Link="nuget\build\$(TargetFramework)\arm64\%(Filename)%(Extension)" />
+    <None Include="nuget\build\android\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
+    <!-- iOS -->
+    <None Include="..\..\output\native\ios\libHarfBuzzSharp.a" Link="nuget\build\$(TargetFramework)\libHarfBuzzSharp.a" />
+    <None Include="nuget\build\ios\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('-tvos'))">
+    <!-- tvOS -->
+    <None Include="..\..\output\native\tvos\libHarfBuzzSharp.a" Link="nuget\build\$(TargetFramework)\libHarfBuzzSharp.a" />
+    <None Include="nuget\build\tvos\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('-watchos'))">
+    <!-- watchOS -->
+    <None Include="..\..\output\native\watchos\libHarfBuzzSharp.a" Link="nuget\build\$(TargetFramework)\libHarfBuzzSharp.a" />
+    <None Include="nuget\build\watchos\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('-macos'))">
+    <!-- macOS -->
+    <None Include="nuget\build\macos\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Binding.Shared\**\*.cs" Link="%(RecursiveDir)%(Filename)%(Extension)" />

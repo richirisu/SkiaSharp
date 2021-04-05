@@ -1,15 +1,32 @@
 ﻿using System;
 using System.ComponentModel;
 
+#if __MAUI__
+using SkiaSharp.Views.Maui;
+using SkiaSharp.Views.Maui.Controls;
+
+using SKFormsView = SkiaSharp.Views.Maui.Controls.SKCanvasView;
+#else
+using Xamarin.Forms;
+
 using SKFormsView = SkiaSharp.Views.Forms.SKCanvasView;
+#endif
 
 #if __ANDROID__
 using Android.Content;
+#if __MAUI__
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+#else
 using Xamarin.Forms.Platform.Android;
+#endif
 using SKNativeView = SkiaSharp.Views.Android.SKCanvasView;
 using SKNativePaintSurfaceEventArgs = SkiaSharp.Views.Android.SKPaintSurfaceEventArgs;
 #elif __IOS__
+#if __MAUI__
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+#else
 using Xamarin.Forms.Platform.iOS;
+#endif
 using SKNativeView = SkiaSharp.Views.iOS.SKCanvasView;
 using SKNativePaintSurfaceEventArgs = SkiaSharp.Views.iOS.SKPaintSurfaceEventArgs;
 #elif WINDOWS_UWP
@@ -37,7 +54,11 @@ using SKNativeView = SkiaSharp.Views.Gtk.SKWidget;
 using SKNativePaintSurfaceEventArgs = SkiaSharp.Views.Desktop.SKPaintSurfaceEventArgs;
 #endif
 
+#if __MAUI__
+namespace SkiaSharp.Views.Maui.Controls.Compatibility
+#else
 namespace SkiaSharp.Views.Forms
+#endif
 {
 	public abstract class SKCanvasViewRendererBase<TFormsView, TNativeView> : ViewRenderer<TFormsView, TNativeView>
 		where TFormsView : SKFormsView
@@ -53,14 +74,12 @@ namespace SkiaSharp.Views.Forms
 		}
 #endif
 
-#if __ANDROID__
-		[EditorBrowsable (EditorBrowsableState.Never)]
-		[Obsolete("This constructor is obsolete as of version 2.5. Please use SKCanvasViewRendererBase(Context) instead.")]
-#endif
+#if !__ANDROID__
 		protected SKCanvasViewRendererBase()
 		{
 			Initialize();
 		}
+#endif
 
 		private void Initialize()
 		{

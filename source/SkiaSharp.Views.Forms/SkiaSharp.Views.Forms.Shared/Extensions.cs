@@ -1,9 +1,19 @@
-﻿using Xamarin.Forms;
+﻿#if __MAUI__
+using Microsoft.Maui;
+#else
+using Xamarin.Forms;
+#endif
 
+#if __MAUI__
+namespace SkiaSharp.Views.Maui
+#else
 namespace SkiaSharp.Views.Forms
+#endif
 {
 	public static class Extensions
 	{
+		// TODO: ToForms* -> ToMaui*
+
 		public static Point ToFormsPoint(this SKPointI point)
 		{
 			return new Point(point.X, point.Y);
