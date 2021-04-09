@@ -3,8 +3,10 @@ using SkiaSharp.Views.Android;
 
 namespace SkiaSharp.Views.Maui.Handlers
 {
-	public partial class SKCanvasViewHandler : AbstractViewHandler<ISKCanvasView, SKCanvasView>
+	public partial class SKCanvasViewHandler : ViewHandler<ISKCanvasView, SKCanvasView>
 	{
+		private SKSizeI lastSize;
+
 		protected override SKCanvasView CreateNativeView()
 		{
 			var nativeView = new SKCanvasView(Context);
@@ -28,7 +30,13 @@ namespace SkiaSharp.Views.Maui.Handlers
 
 		private void OnPaintSurface(object? sender, Android.SKPaintSurfaceEventArgs e)
 		{
-			VirtualView?.OnCanvasSizeChanged(e.Info.Size);
+			var newSize = e.Info.Size;
+			if (lastSize != newSize)
+			{
+				lastSize = newSize;
+				VirtualView?.OnCanvasSizeChanged(newSize);
+			}
+
 			VirtualView?.OnPaintSurface(new SKPaintSurfaceEventArgs(e.Surface, e.Info));
 		}
 	}

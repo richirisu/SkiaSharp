@@ -1,13 +1,18 @@
 ﻿using System;
 using Windows.Foundation;
 using Windows.UI;
-using Windows.UI.Xaml.Media.Imaging;
 
-#if !HAS_UNO
-using SkiaSharp.Views.UWP.Interop;
+#if WINDOWS
+using Microsoft.UI.Xaml.Media.Imaging;
+#else
+using Windows.UI.Xaml.Media.Imaging;
 #endif
 
+#if WINDOWS
+namespace SkiaSharp.Views.Windows
+#else
 namespace SkiaSharp.Views.UWP
+#endif
 {
 	public static class UWPExtensions
 	{

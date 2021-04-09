@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace SkiaSharp.Views.UWP.Interop
+#if WINDOWS
+namespace SkiaSharp.Views.Windows
+#else
+namespace SkiaSharp.Views.UWP
+#endif
 {
 	[ComImport]
 	[Guid("905a0fef-bc53-11df-8c49-001e4fc686da")]

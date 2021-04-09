@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net6.0;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
-    <!-- <TargetFrameworks Condition="$(IsWindows)">$(TargetFrameworks);net6.0-windows10.0.17763</TargetFrameworks> -->
+    <!-- <TargetFrameworks Condition="$(IsWindows)">$(TargetFrameworks);net6.0-windows10.0.18362</TargetFrameworks> -->
     <PackagingGroup>SkiaSharp.Views.Maui.Core</PackagingGroup>
     <RootNamespace>SkiaSharp.Views.Maui.Core</RootNamespace>
     <AssemblyName>SkiaSharp.Views.Maui.Core</AssemblyName>
@@ -10,7 +10,7 @@
     <DefineConstants>$(DefineConstants);__MAUI__</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Core" Version="6.0.100-preview.3.269" />
+    <PackageReference Include="Microsoft.Maui.Core" Version="6.0.100-preview.3.322" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
@@ -49,8 +49,5 @@
   </ItemGroup>
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6.0-android'))">
     <None Include="..\..\SkiaSharp.Views.Forms\SkiaSharp.Views.Forms.Android\SKTouchHandler.cs" Link="Platform\Android\SKTouchHandler.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Platform\Android\" />
   </ItemGroup>
 </Project>
