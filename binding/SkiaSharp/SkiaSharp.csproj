@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net462</TargetFrameworks>
-    <TargetFrameworks Condition="$(BuildingForNet6)">$(TargetFrameworks);net6.0;net6.0-ios10.0;net6.0-maccatalyst13.1;net6.0-tvos10.0;net6.0-macos10.14;net6.0-android</TargetFrameworks>
-    <TargetFrameworks Condition="$(BuildingForNet6) and $(IsWindows)">$(TargetFrameworks);net6.0-windows7;net6.0-windows10.0.17763</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6) and !$(SkipBuildingMobile)">$(TargetFrameworks);net6.0;net6.0-ios;net6.0-maccatalyst;net6.0-tvos;net6.0-macos;net6.0-android</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6) and $(IsWindows)">$(TargetFrameworks);net5.0-windows7;net5.0-windows10.0.17763</TargetFrameworks>
     <RootNamespace>SkiaSharp</RootNamespace>
     <AssemblyName>SkiaSharp</AssemblyName>
     <PackagingGroup>SkiaSharp</PackagingGroup>

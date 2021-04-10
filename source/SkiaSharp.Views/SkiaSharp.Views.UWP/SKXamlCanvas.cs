@@ -100,6 +100,7 @@ namespace SkiaSharp.Views.UWP
 		{
 			var root = xamlRoot ?? XamlRoot;
 			Dpi = root.RasterizationScale;
+			Invalidate();
 		}
 #else
 		private void OnDpiChanged(DisplayInformation sender, object args = null)

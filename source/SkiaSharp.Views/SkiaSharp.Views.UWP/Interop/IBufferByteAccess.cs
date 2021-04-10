@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Windows.Storage.Streams;
 
-#if WINDOWS
-namespace SkiaSharp.Views.Windows
-#else
 namespace SkiaSharp.Views.UWP
-#endif
 {
 	[ComImport]
 	[Guid("905a0fef-bc53-11df-8c49-001e4fc686da")]
@@ -13,5 +10,21 @@ namespace SkiaSharp.Views.UWP
 	internal interface IBufferByteAccess
 	{
 		long Buffer([Out] out IntPtr value);
+	}
+
+	internal static class Utils
+	{
+		internal static IntPtr GetByteBuffer(this IBuffer buffer)
+		{
+			var byteBuffer = buffer as IBufferByteAccess;
+			if (byteBuffer == null)
+				throw new InvalidCastException("Unable to convert WriteableBitmap.PixelBuffer to IBufferByteAccess.");
+
+			var hr = byteBuffer.Buffer(out var ptr);
+			if (hr < 0)
+				throw new InvalidCastException("Unable to retrieve pixel address from WriteableBitmap.PixelBuffer.");
+
+			return ptr;
+		}
 	}
 }

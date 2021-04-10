@@ -54,6 +54,7 @@
     <PackageReference Include="mdoc" Version="5.7.4.10" PrivateAssets="All" />
   </ItemGroup>
 
+  <!-- workaround for https://github.com/microsoft/ProjectReunion/pull/707 -->
   <Target Name="Net6WinUIWorkaround"
           BeforeTargets="_GetSdkToolsPathsFromSdk"
           Condition="$(TargetFramework.Contains('-windows')) == true ">

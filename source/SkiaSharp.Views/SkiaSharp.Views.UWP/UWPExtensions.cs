@@ -169,19 +169,8 @@ namespace SkiaSharp.Views.UWP
 			}
 		}
 
-		internal static IntPtr GetPixels(this WriteableBitmap bitmap)
-		{
-			var buffer = bitmap.PixelBuffer as IBufferByteAccess;
-			if (buffer == null)
-				throw new InvalidCastException("Unable to convert WriteableBitmap.PixelBuffer to IBufferByteAccess.");
-
-			IntPtr ptr;
-			var hr = buffer.Buffer(out ptr);
-			if (hr < 0)
-				throw new InvalidCastException("Unable to retrieve pixel address from WriteableBitmap.PixelBuffer.");
-
-			return ptr;
-		}
+		internal static IntPtr GetPixels(this WriteableBitmap bitmap) =>
+			bitmap.PixelBuffer.GetByteBuffer();
 #endif
 	}
 }

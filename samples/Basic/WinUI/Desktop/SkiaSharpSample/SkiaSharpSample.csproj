@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>SkiaSharpSample</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -20,4 +21,9 @@
     <ProjectReference Include="..\..\..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
     <ProjectReference Include="..\..\..\..\..\source\SkiaSharp.Views\SkiaSharp.Views\SkiaSharp.Views.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\..\..\output\native\windows\$(Platform)\libSkiaSharp.dll" Condition="Exists('..\..\..\..\..\output\native\windows\$(Platform)\libSkiaSharp.dll')" />
+  </ItemGroup>
+
 </Project>
