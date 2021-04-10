@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
-    <TargetFrameworks Condition="$(BuildingForNet6)">$(TargetFrameworks);net6.0-windows7;net6.0-windows10.0.17763</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6)">$(TargetFrameworks);net5.0-windows10.0.17763</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>SkiaSharp.Views.Desktop</RootNamespace>
     <AssemblyName>SkiaSharp.Views.WindowsForms</AssemblyName>

@@ -1,9 +1,9 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.Graphics.Display;
-using Microsoft.System;
 
 #if WINDOWS
+using Microsoft.System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
