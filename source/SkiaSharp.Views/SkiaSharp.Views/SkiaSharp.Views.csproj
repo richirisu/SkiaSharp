@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks Condition="$(BuildingForNet6) and !$(SkipBuildingMobile)">$(TargetFrameworks);net6.0-ios;net6.0-maccatalyst;net6.0-tvos;net6.0-macos;net6.0-android</TargetFrameworks>
+    <TargetFrameworks Condition="$(BuildingForNet6)">$(TargetFrameworks);net6.0-ios;net6.0-maccatalyst;net6.0-tvos;net6.0-macos;net6.0-android</TargetFrameworks>
     <TargetFrameworks Condition="$(BuildingForNet6) and $(IsWindows)">$(TargetFrameworks);net5.0-windows10.0.18362</TargetFrameworks>
     <PackagingGroup>SkiaSharp.Views</PackagingGroup>
+    <!-- https://github.com/NuGet/Home/issues/5226 -->
+    <PackageId>SkiaSharp.Views</PackageId>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-maccatalyst'))">
     <RootNamespace>SkiaSharp.Views.iOS</RootNamespace>

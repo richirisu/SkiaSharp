@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0-android</TargetFrameworks>
-    <!--<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>-->
+    <TargetFrameworks Condition="'$(BuildingInsideVisualStudio)' != 'true'">net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+    <TargetFramework Condition="'$(BuildingInsideVisualStudio)' == 'true'">net6.0-android</TargetFramework>
     <OutputType>Exe</OutputType>
     <SingleProject>true</SingleProject>
     <ApplicationTitle>SkiaSharpSample</ApplicationTitle>
@@ -15,6 +15,14 @@
     <PackageReference Include="Microsoft.Maui" Version="6.0.100-preview.3.322" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
+    <ProjectReference Include="..\..\..\..\source\SkiaSharp.Views\SkiaSharp.Views\SkiaSharp.Views.csproj" />
+    <ProjectReference Include="..\..\..\..\source\SkiaSharp.Views.Maui\SkiaSharp.Views.Maui.Core\SkiaSharp.Views.Maui.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\source\SkiaSharp.Views.Maui\SkiaSharp.Views.Maui.Controls\SkiaSharp.Views.Maui.Controls.csproj" />
+    <ProjectReference Include="..\..\..\..\source\SkiaSharp.Views.Maui\SkiaSharp.Views.Maui.Controls.Compatibility\SkiaSharp.Views.Maui.Controls.Compatibility.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <MauiImage Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" />
   </ItemGroup>
+  <Import Project="..\..\..\..\output\SkiaSharp\nuget\build\$(TargetFramework)\SkiaSharp.targets" Condition="Exists('..\..\..\..\output\SkiaSharp\nuget\build\$(TargetFramework)\SkiaSharp.targets')" />
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Hosting;
 
 namespace SkiaSharpSample
 {
@@ -10,7 +10,9 @@ namespace SkiaSharpSample
 		{
 			appBuilder
 				.UseFormsCompatibility()
-				.UseMauiApp<App>();
+				.UseMauiApp<App>()
+				//.UseSkiaSharpHandlers()
+				.UseSkiaSharpCompatibilityRenderers();
 		}
 	}
 }
