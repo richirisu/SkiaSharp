@@ -41,15 +41,10 @@ namespace SkiaSharp.Views.Forms
 		{
 			get
 			{
-				if (GetCanvasSize != null)
-				{
-					// try send a message to the native view
-					var args = new GetPropertyValueEventArgs<SKSize>();
-					GetCanvasSize.Invoke(this, args);
-					lastCanvasSize = args.Value;
-				}
-
-				return lastCanvasSize;
+				// try send a message to the native view
+				var args = new GetPropertyValueEventArgs<SKSize>();
+				GetCanvasSize?.Invoke(this, args);
+				return args.Value;
 			}
 		}
 

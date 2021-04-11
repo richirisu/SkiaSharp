@@ -1,24 +1,38 @@
 ﻿#nullable enable
 
+using System;
+
 namespace SkiaSharp.Views.Maui.Controls
 {
-	partial class SKCanvasView : ISKCanvasView
+	public partial class SKCanvasView : ISKCanvasView
 	{
-		private SKSize lastCanvasSize;
+		private SKSizeI lastCanvasSize;
 
-		void ISKCanvasView.OnCanvasSizeChanged(SKSizeI size)
+		public SKCanvasView()
 		{
+			var controller = (ISKCanvasViewController)this;
+
+			controller.GetCanvasSize += OnGetCanvasSize;
+			controller.SurfaceInvalidated += OnSurfaceInvalidated;
+
+			void OnGetCanvasSize(object? sender, GetPropertyValueEventArgs<SKSize> e)
+			{
+				e.Value = lastCanvasSize;
+			}
+
+			void OnSurfaceInvalidated(object? sender, EventArgs e)
+			{
+				Handler.UpdateValue(nameof(ISKCanvasView.InvalidateSurface));
+			}
+		}
+
+		void ISKCanvasView.OnCanvasSizeChanged(SKSizeI size) =>
 			lastCanvasSize = size;
-		}
 
-		void ISKCanvasView.OnPaintSurface(SKPaintSurfaceEventArgs e)
-		{
+		void ISKCanvasView.OnPaintSurface(SKPaintSurfaceEventArgs e) =>
 			OnPaintSurface(e);
-		}
 
-		void ISKCanvasView.OnTouch(SKTouchEventArgs e)
-		{
+		void ISKCanvasView.OnTouch(SKTouchEventArgs e) =>
 			OnTouch(e);
-		}
 	}
 }

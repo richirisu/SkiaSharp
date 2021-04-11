@@ -9,8 +9,8 @@ namespace SkiaSharp.Views.Forms
 {
 	internal class SKTouchHandler
 	{
-		private Action<SKTouchEventArgs> onTouchAction;
-		private Func<double, double, SKPoint> scalePixels;
+		private Action<SKTouchEventArgs>? onTouchAction;
+		private Func<double, double, SKPoint>? scalePixels;
 
 		public SKTouchHandler(Action<SKTouchEventArgs> onTouchAction, Func<double, double, SKPoint> scalePixels)
 		{
@@ -40,7 +40,7 @@ namespace SkiaSharp.Views.Forms
 			scalePixels = null;
 		}
 
-		private void OnTouch(object sender, View.TouchEventArgs e)
+		private void OnTouch(object? sender, View.TouchEventArgs e)
 		{
 			if (onTouchAction == null || scalePixels == null)
 				return;

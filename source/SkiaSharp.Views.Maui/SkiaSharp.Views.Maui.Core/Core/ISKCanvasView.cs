@@ -6,9 +6,9 @@ namespace SkiaSharp.Views.Maui
 	{
 		SKSize CanvasSize { get; }
 
-		bool IgnorePixelScaling { get; set; }
+		bool IgnorePixelScaling { get; }
 
-		bool EnableTouchEvents { get; set; }
+		bool EnableTouchEvents { get; }
 
 		void InvalidateSurface();
 

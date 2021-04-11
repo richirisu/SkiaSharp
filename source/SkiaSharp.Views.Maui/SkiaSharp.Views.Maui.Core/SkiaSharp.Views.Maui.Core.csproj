@@ -21,14 +21,20 @@
   </ItemGroup>
   <!-- local files -->
   <ItemGroup Condition="'$(TargetFramework)' != 'net6.0'">
+    <Compile Remove="**\Ref\**\*.cs" />
+    <None Include="**\Ref\**\*.cs" />
     <Compile Remove="**\*.Ref.cs" />
     <None Include="**\*.Ref.cs" />
   </ItemGroup>
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6.0-ios')) and !$(TargetFramework.StartsWith('net6.0-maccatalyst'))">
+    <Compile Remove="**\iOS\**\*.cs" />
+    <None Include="**\iOS\**\*.cs" />
     <Compile Remove="**\*.iOS.cs" />
     <None Include="**\*.iOS.cs" />
   </ItemGroup>
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6.0-android'))">
+    <Compile Remove="**\Android\**\*.cs" />
+    <None Include="**\Android\**\*.cs" />
     <Compile Remove="**\*.Android.cs" />
     <None Include="**\*.Android.cs" />
   </ItemGroup>

@@ -8,6 +8,10 @@ namespace SkiaSharp.Views.Maui.Handlers
 		public static PropertyMapper<ISKCanvasView, SKCanvasViewHandler> SKCanvasViewMapper =
 			new PropertyMapper<ISKCanvasView, SKCanvasViewHandler>(ViewHandler.ViewMapper)
 			{
+				[nameof(ISKCanvasView.EnableTouchEvents)] = MapEnableTouchEvents,
+				[nameof(ISKCanvasView.IgnorePixelScaling)] = MapIgnorePixelScaling,
+
+				[nameof(ISKCanvasView.InvalidateSurface)] = OnInvalidateSurface,
 			};
 
 		public SKCanvasViewHandler()
