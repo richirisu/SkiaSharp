@@ -1,8 +1,7 @@
-﻿using Microsoft.Maui.Hosting;
-using SkiaSharp.Views.Maui.Controls;
-using SkiaSharp.Views.Maui.Controls.Compatibility;
+﻿using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Hosting;
 
-namespace Microsoft.Maui.Controls.Compatibility
+namespace SkiaSharp.Views.Maui.Controls.Compatibility
 {
 	public static class AppHostBuilderExtensions
 	{

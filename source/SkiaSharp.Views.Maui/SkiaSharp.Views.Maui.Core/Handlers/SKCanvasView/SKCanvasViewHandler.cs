@@ -13,7 +13,6 @@ namespace SkiaSharp.Views.Maui.Handlers
 		public SKCanvasViewHandler()
 			: base(SKCanvasViewMapper)
 		{
-
 		}
 
 		public SKCanvasViewHandler(PropertyMapper? mapper)

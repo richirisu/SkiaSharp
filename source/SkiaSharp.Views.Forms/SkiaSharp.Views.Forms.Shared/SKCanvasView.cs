@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 
 #if __MAUI__
 using Microsoft.Maui;
@@ -25,24 +27,29 @@ namespace SkiaSharp.Views.Forms
 			BindableProperty.Create(nameof(EnableTouchEvents), typeof(bool), typeof(SKCanvasView), false);
 
 		// the user can subscribe to repaint
-		public event EventHandler<SKPaintSurfaceEventArgs> PaintSurface;
+		public event EventHandler<SKPaintSurfaceEventArgs>? PaintSurface;
 
 		// the user can subscribe to touch events
-		public event EventHandler<SKTouchEventArgs> Touch;
+		public event EventHandler<SKTouchEventArgs>? Touch;
 
 		// the native listens to this event
-		private event EventHandler SurfaceInvalidated;
-		private event EventHandler<GetPropertyValueEventArgs<SKSize>> GetCanvasSize;
+		private event EventHandler? SurfaceInvalidated;
+		private event EventHandler<GetPropertyValueEventArgs<SKSize>>? GetCanvasSize;
 
 		// the user asks the for the size
 		public SKSize CanvasSize
 		{
 			get
 			{
-				// send a mesage to the native view
-				var args = new GetPropertyValueEventArgs<SKSize>();
-				GetCanvasSize?.Invoke(this, args);
-				return args.Value;
+				if (GetCanvasSize != null)
+				{
+					// try send a message to the native view
+					var args = new GetPropertyValueEventArgs<SKSize>();
+					GetCanvasSize.Invoke(this, args);
+					lastCanvasSize = args.Value;
+				}
+
+				return lastCanvasSize;
 			}
 		}
 
