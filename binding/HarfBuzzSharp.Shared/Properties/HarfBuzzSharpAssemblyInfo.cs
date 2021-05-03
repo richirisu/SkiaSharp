@@ -23,6 +23,8 @@ using System.Runtime.CompilerServices;
 	"dafa277b22de47d6ffea449674a4f9fccf84d15069089380284dbdd35f46cdff12a1bd78e4ef00" +
 	"65d016df")]
 
+[assembly: AssemblyMetadata("IsTrimmable", "True")]
+
 #if __IOS__ || __TVOS__ || __WATCHOS__ || __MACOS__
 // This attribute allows you to mark your assemblies as “safe to link”.
 // When the attribute is present, the linker—if enabled—will process the assembly

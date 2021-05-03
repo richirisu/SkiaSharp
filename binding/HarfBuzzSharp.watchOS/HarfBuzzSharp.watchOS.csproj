@@ -7,7 +7,7 @@
     <DefineConstants>$(DefineConstants);HARFBUZZ</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\output\native\watchos\libHarfBuzzSharp.a" Link="nuget\build\$(TargetFramework)\libHarfBuzzSharp.a" />
+    <None Include="..\..\output\native\watchos\libHarfBuzzSharp.framework\**" Link="nuget\build\$(TargetFramework)\libHarfBuzzSharp.framework\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\HarfBuzzSharp\nuget\build\watchos\HarfBuzzSharp.targets" Link="nuget\build\$(TargetFramework)\HarfBuzzSharp.targets" />
