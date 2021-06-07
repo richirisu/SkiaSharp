@@ -9,9 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.725" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
+    <PackageReference Include="SkiaSharp" Version="2.80.2" />
   </ItemGroup>
   <ItemGroup>
     <None Include="nuget\build\net462\SkiaSharp.Views.Forms.targets" Link="nuget\build\$(TargetFramework)\SkiaSharp.Views.Forms.targets" />
